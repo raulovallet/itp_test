@@ -1,0 +1,19 @@
+{
+   "registrants": [
+      {
+         "name": "Lucy Liu",
+         "email": "lucy@liu.com",
+         "phone": "None"
+      },
+      {
+         "name": "Doug",
+         "email": "doug@emmy.com",
+         "phone": "4564445556"
+      },
+      {
+         "name": "Uma Thurman",
+         "email": "uma@thurs.com",
+         "phone": "None"
+      }
+   ]
+}
