@@ -46,6 +46,8 @@
 #
 # 5) If not matched, simply add it to ContactsList
 import json
+import re
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
 ContactList = [
     'Alice Brown / None / 1231112223'.split(' / '),
@@ -132,9 +134,9 @@ with open("registrants.json", "r") as registrants_file:
                 contact_obj = Contact(idx)
                 if contact_obj.Name == 'None':
                     contact_obj.setName(registrant['name'])
-                if contact_obj.Email == 'None':
+                if contact_obj.Email == 'None' and re.search(regex, registrant['email']):
                     contact_obj.setEmail(registrant['email'])
-                if contact_obj.Name == 'None':
+                if contact_obj.Phone == 'None' and len(registrant['phone']) == 10 and registrant['phone'].isdigit():
                     contact_obj.setPhone(registrant['phone'])
                 break
         if idx == 'NotFound':
@@ -150,14 +152,18 @@ with open("registrants.json", "r") as registrants_file:
                     lead_obj = Lead(idx)
                     if lead_obj.Name == 'None':
                         lead_obj.setName(registrant['name'])
-                    if lead_obj.Email == 'None':
+                    if lead_obj.Email == 'None' and re.search(regex, registrant['email']):
                         lead_obj.setEmail(registrant['email'])
-                    if lead_obj.Name == 'None':
+                    if lead_obj.Phone == 'None' and len(registrant['phone']) == 10 and registrant['phone'].isdigit():
                         lead_obj.setPhone(registrant['phone'])
                     index_to_transfer.append(idx)
                     break
         if idx == 'NotFound':
-            ContactList.append([registrant['name'], registrant['email'], registrant['phone']])
+            ContactList.append([
+                registrant['name'],
+                registrant['email'] if re.search(regex, registrant['email']) else 'None',
+                registrant['phone'] if len(registrant['phone']) == 10 and registrant['phone'].isdigit(),
+            ])
 
 for index in index_to_transfer:
     lead_obj = Lead(index)
