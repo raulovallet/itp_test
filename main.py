@@ -162,7 +162,7 @@ with open("registrants.json", "r") as registrants_file:
             ContactList.append([
                 registrant['name'],
                 registrant['email'] if re.search(regex, registrant['email']) else 'None',
-                registrant['phone'] if len(registrant['phone']) == 10 and registrant['phone'].isdigit(),
+                registrant['phone'] if len(registrant['phone']) == 10 and registrant['phone'].isdigit() else 'None',
             ])
 
 for index in index_to_transfer:
