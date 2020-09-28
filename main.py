@@ -115,6 +115,7 @@ with open("registrants.json", "r") as registrants_file:
     start_contact = [] + ContactList
     start_leads = [] + LeadsList
     registrants = json.load(registrants_file)
+    index_to_transfer = []
     for registrant in registrants['registrants']:
         print(registrant)
         idx = 'NotFound'
@@ -153,10 +154,14 @@ with open("registrants.json", "r") as registrants_file:
                         lead_obj.setEmail(registrant['email'])
                     if lead_obj.Name == 'None':
                         lead_obj.setPhone(registrant['phone'])
-                    lead_obj.transferToContact()
+                    index_to_transfer.append(idx)
                     break
         if idx == 'NotFound':
             ContactList.append([registrant['name'], registrant['email'], registrant['phone']])
+
+for index in index_to_transfer:
+    lead_obj = Lead(index)
+    lead_obj.transferToContact()
 
 print('---------------')
 print('Contacts final:')
