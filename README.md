@@ -1,13 +1,16 @@
-# itp_test
-test
+# IT Perfectionists
 Here are the data you should work with (Name/Email/Phone). All phones are stored as 10 digits - no brackets, spaces or dashes:
 
 CONTACTS:
 
 Alice Brown / None / 1231112223
+
 Bob Crown / bob@crowns.com / None
+
 Carlos Drew / carl@drewess.com / 3453334445
+
 Doug Emerty / None / 4564445556
+
 Egan Fair / eg@fairness.com / 5675556667
 
 
@@ -15,9 +18,13 @@ Egan Fair / eg@fairness.com / 5675556667
 LEADS:
 
 None / kevin@keith.com / None
+
 Lucy / lucy@liu.com / 3210001112
+
 Mary Middle / mary@middle.com / 3331112223
+
 None / None / 4442223334
+
 None / ole@olson.com / None
 
 
@@ -25,7 +32,9 @@ None / ole@olson.com / None
 REGISTRANTS (these should be read as JSON mentioned above)
 
 Lucy Liu / lucy@liu.com / None
+
 Doug / doug@emmy.com / 4564445556
+
 Uma Thurman / uma@thurs.com / None
 
 
